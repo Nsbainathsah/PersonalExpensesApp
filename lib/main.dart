@@ -31,7 +31,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Personal Expenses'),
+          title: Text('Personal Expenses App'),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
