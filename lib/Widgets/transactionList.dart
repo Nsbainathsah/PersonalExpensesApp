@@ -9,51 +9,54 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: transactions.map((tx) {
-        return Card(
-          child: Row(
-            children: [
-              Container(
-                padding: EdgeInsets.all(5),
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                decoration: BoxDecoration(
-                    border: Border.all(
-                  color: Colors.purple,
-                  width: 2,
-                )),
-                child: Text(
-                  //transaction card amount
-                  '\$${tx.amount}', //String interpolation (Dart feature) replaces .toString() adds all Strings inside curly braces together
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
-                      color: Colors.purple),
-                ),
-              ),
-              Column(
-                //Column containing the title and date of a transaction
-                crossAxisAlignment: CrossAxisAlignment
-                    .start, //alligns the transaction to the right
-                children: [
-                  Text(
-                    tx.title,
+    return Container(
+      height: 400,
+      child: ListView.builder(
+        itemBuilder: (ctx, index){
+          return Card(
+            child: Row(
+              children: [
+                Container(
+                  padding: EdgeInsets.all(5),
+                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                    color: Colors.purple,
+                    width: 2,
+                  )),
+                  child: Text(
+                    //transaction card amount
+                    '\$${transactions[index].amount}', //String interpolation (Dart feature) replaces .toString() adds all Strings inside curly braces together
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
-                    ),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        color: Colors.purple),
                   ),
-                  //transaction card title
-                  Text(
-                    DateFormat.yMMMd().format(tx.tDate),
-                    style: TextStyle(fontSize: 10, color: Colors.grey),
-                  )
-                ], //transaction card date
-              )
-            ],
-          ),
-        );
-      }).toList(),
+                ),
+                Column(
+                  //Column containing the title and date of a transaction
+                  crossAxisAlignment: CrossAxisAlignment.start, //alligns the transactionbutton to the right
+                  children: [
+                    Text(
+                      transactions[index].title,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                      ),
+                    ),
+                    //transaction card title
+                    Text(
+                      DateFormat.yMMMd().format(transactions[index].tDate),
+                      style: TextStyle(fontSize: 10, color: Colors.grey),
+                    )
+                  ], //transaction card date
+                )
+              ],
+            ),
+          );
+        },
+        itemCount: transactions.length,
+      ),
     );
   }
 }
