@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 
 void main() => runApp(MyApp());
 
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Flutter App'),
+          title: Text('Personal Expenses'),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -55,10 +56,10 @@ class MyHomePage extends StatelessWidget {
                       decoration: InputDecoration(labelText: 'Amount'),
                     ),
                     FlatButton(
-                      onPressed: (){}, 
+                      onPressed: () {},
                       textColor: Colors.purple,
                       child: Text('Add transaction'),
-                      )
+                    )
                   ],
                 ),
               ),
@@ -88,7 +89,7 @@ class MyHomePage extends StatelessWidget {
                       ),
                       Column(
                         //Column containing the title and date of a transaction
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start, //alligns the transaction to the right
                         children: [
                           Text(
                             tx.title,
