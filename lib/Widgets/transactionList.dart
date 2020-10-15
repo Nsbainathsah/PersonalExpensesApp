@@ -10,7 +10,7 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 400,
+      height: 300,
       child: ListView.builder(
         itemBuilder: (ctx, index){
           return Card(
@@ -21,16 +21,16 @@ class TransactionList extends StatelessWidget {
                   margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
                   decoration: BoxDecoration(
                       border: Border.all(
-                    color: Colors.purple,
+                    color: Theme.of(context).primaryColor,
                     width: 2,
                   )),
                   child: Text(
                     //transaction card amount
-                    '\$${transactions[index].amount}', //String interpolation (Dart feature) replaces .toString() adds all Strings inside curly braces together
+                    '\$${transactions[index].amount.toStringAsFixed(2)}', //String interpolation (Dart feature) replaces .toString() adds all Strings inside curly braces together, to string still added for 2 decimal places
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 14,
-                        color: Colors.purple),
+                        color: Theme.of(context).primaryColor),
                   ),
                 ),
                 Column(
@@ -47,7 +47,9 @@ class TransactionList extends StatelessWidget {
                     //transaction card title
                     Text(
                       DateFormat.yMMMd().format(transactions[index].tDate),
-                      style: TextStyle(fontSize: 10, color: Colors.grey),
+                      style: TextStyle(
+                        fontSize: 10, 
+                        color: Theme.of(context).primaryColor),
                     )
                   ], //transaction card date
                 )
